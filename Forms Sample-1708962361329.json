@@ -1,0 +1,180 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_STATIC",
+      "label": "Static",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "marcusolsson-static-datasource",
+      "pluginName": "Static"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.0.2"
+    },
+    {
+      "type": "panel",
+      "id": "marcusolsson-dynamictext-panel",
+      "name": "Dynamic Text",
+      "version": "4.3.0"
+    },
+    {
+      "type": "datasource",
+      "id": "marcusolsson-static-datasource",
+      "name": "Static",
+      "version": "3.0.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "${DS_STATIC}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 9,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "afterRender": "flatpickr('#calendar-range', {\r\n  \"mode\": \"range\"\r\n});\r\n\r\n\r\ninvokeCreateSchedulAPI = () => {\r\n\r\n  alert();\r\n}",
+        "content": "<form class=\"w-full max-w-md\" name=\"frm_1\">\r\n\t<div class=\"md:flex md:items-center mb-6\">\r\n\t\t<div class=\"md:w-1/4\">\r\n\t\t\t<label class=\"block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4\" for=\"inline-full-name\">\r\n\t\t\t\tName\r\n\t\t\t</label>\r\n\t\t</div>\r\n\t\t<div class=\"md:w-3/4\">\r\n\t\t\t<input class=\"bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500\" id=\"inline-full-name\" type=\"text\" value=\"\">\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"md:flex md:items-center mb-6\">\r\n\t\t<div class=\"md:w-1/4\">\r\n\t\t\t<label class=\"block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4\" for=\"entity\">\r\n\t\t\t\tPreReqs Status  \r\n\t\t\t</label>\r\n\t\t</div>\r\n\t\t<div class=\"md:w-3/4\">\r\n\t\t\t<select for=\"entity\"\r\n\t\t\t\t\tclass=\"w-full p-1 mt-2 mb-2 text-white-800 border border-solid border-gray-400\r\n\t\t\t\t\trounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none\">\r\n\t\t\t\t\t<option value=\"\">Ready for PreReqs</option>\r\n\t\t\t\t\t<option value=\"\">PreReqs Complete</option>\r\n\t\t\t\t\t<option value=\"\" style=\"color:red\">Aborted</option>\r\n\t\t\t\t\t<option value=\"\" style=\"color:red\">OnHold</option>\r\n\t\t\t\t\t<option value=\"\">preReq Completed</option>\r\n\t\t\t\t</select>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"md:flex md:items-center mb-6\">\r\n\t\t<div class=\"md:w-1/4\">\r\n\t\t\t<label class=\"block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4\" for=\"status\">\r\n\t\t\t\t Status\r\n\t\t\t</label>\r\n\t\t</div>\r\n\t\t<div class=\"md:w-3/4\">\r\n\t\t\t<select for=\"status\"\r\n\t\t\t\t\tclass=\"w-full p-1 mt-2 mb-2 text-white-800 border border-solid border-gray-400\r\n\t\t\t\t\trounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none\">\r\n\t\t\t\t\t<option value=\"\">Ready For Scheduling</option>\r\n\t\t\t\t\t<option value=\"\">Scheduled</option>\r\n\t\t\t\t\t<option value=\"\">Ready for PreReqs</option>\r\n\t\t\t\t\t<option value=\"\">PreReqs Complete</option>\r\n\t\t\t\t\t<option value=\"\" style=\"color:red\">Aborted</option>\r\n\t\t\t\t\t<option value=\"\" style=\"color:red\">OnHold</option>\r\n\t\t\t\t\t<option value=\"\">Completed</option>\r\n\t\t\t\t</select>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"md:flex md:items-center mb-8\">\r\n\t\t<div class=\"md:w-1/4\">\r\n\t\t\t<label class=\"block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4\" for=\"period\">\r\n\t\t\t\tPreReq Dates\r\n\t\t\t</label>\r\n\t\t</div>\r\n\t\t<div class=\"md:w-3/4 relative\">\r\n\t\t\t<div class=\"dt_group\">\r\n\t\t\t\t<input class=\"calendar-input\" type=\"text\" id=\"calendar-range\">\r\n\t\t\t\t<span class=\"bar\"></span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"md:flex md:items-center mb-8\">\r\n\t\t<div class=\"md:w-1/4\">\r\n\t\t\t<label class=\"block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4\" for=\"period\">\r\n\t\t\t\tSchedule Dates\r\n\t\t\t</label>\r\n\t\t</div>\r\n\t\t<div class=\"md:w-3/4 relative\">\r\n\t\t\t<div class=\"dt_group\">\r\n\t\t\t\t<input class=\"calendar-input\" type=\"text\" id=\"calendar-range\">\r\n\t\t\t\t<span class=\"bar\"></span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"md:flex md:items-center mb-8\">\r\n\t\t<div class=\"md:w-1/4\">\r\n\t\t\t<label class=\"mt-2 block text-teal-500 font-bold md:text-right mb-1 md:mb-0 pr-4\" for=\"period\">\r\n\t\t\t</label>\r\n\t\t</div>\r\n\t\t<div class=\"md:w-3/4 grid  grid-rows-1 grid-flow-col\">\r\n\t\t\t<button type=\"button\" class=\"focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800\"\r\n\t\t\tonclick=\"invokeCreateSchedulAPI()\"\r\n\t\t\t>Save</button>\r\n\t\t</div>\r\n\t</div>\r\n</form>",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 296,
+          "language": "handlebars"
+        },
+        "editors": [
+          "styles",
+          "afterRender"
+        ],
+        "externalScripts": [
+          {
+            "id": "83b56442-5195-446c-ac34-1f59d9f3d057",
+            "url": "https://cdn.tailwindcss.com"
+          },
+          {
+            "id": "36d00a26-e383-40b8-9b30-0499acf54dfa",
+            "url": "https://cdn.jsdelivr.net/npm/flatpickr"
+          }
+        ],
+        "externalStyles": [
+          {
+            "id": "755bc48b-a5b4-430a-9346-66d1ce62cf51",
+            "url": "https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+          }
+        ],
+        "helpers": "",
+        "renderMode": "allRows",
+        "styles": ".dt_group {\r\n  position: relative;\r\n  margin: 2px 0px 5px;\r\n}\r\n\r\n.calendar-input {\r\n  color: #fefefe;\r\n  font-size: 1.2em;\r\n  padding: 10px 10px 5px 5px;\r\n  display: block;\r\n  width: 300px;\r\n  border: none;\r\n  border-bottom: 1px solid #607D8B;\r\n}\r\n\r\ninput:focus {\r\n  outline: none;\r\n}\r\n\r\n\r\ninput[readonly]~label.input-label {\r\n  top: -15px;\r\n  font-size: 0.9em;\r\n}\r\n\r\n.bar {\r\n  position: relative;\r\n  display: block;\r\n  width: 315px;\r\n}\r\n\r\n.bar:before,\r\n.bar:after {\r\n  background: #A988D1;\r\n  content: '';\r\n  height: 2px;\r\n  width: 0;\r\n  bottom: 1px;\r\n  position: absolute;\r\n  transition: 0.2s ease all;\r\n  -moz-transition: 0.2s ease all;\r\n  -webkit-transition: 0.2s ease all;\r\n}\r\n\r\n.bar:before {\r\n  left: 50%;\r\n}\r\n\r\n.bar:after {\r\n  right: 50%;\r\n}\r\n\r\ninput:focus~.bar:before,\r\ninput:focus~.bar:after {\r\n  width: 50%;\r\n}",
+        "wrap": true
+      },
+      "pluginVersion": "4.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "${DS_STATIC}"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Name",
+                "type": "string",
+                "values": [
+                  "Amazon",
+                  "Myntra",
+                  "Flipkart"
+                ]
+              },
+              {
+                "config": {},
+                "name": "Values",
+                "type": "string",
+                "values": [
+                  "50",
+                  "30",
+                  "20"
+                ]
+              }
+            ],
+            "meta": {
+              "preferredVisualisationType": "table"
+            },
+            "name": "Name"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Define Schedule",
+      "type": "marcusolsson-dynamictext-panel"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Forms Sample",
+  "uid": "a6d020fb-9ecf-4985-9335-0a60d009ca12",
+  "version": 6,
+  "weekStart": ""
+}
