@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @samant-rags
-- 👀 I’m interested in ...grafana sterling commerce OMS inventory management
+- 👀 I’m interested in ...AI, n8n, Grafana , IBM Sterling commerce, OMS ,inventory management
 - 🌱 I’m currently learning ...nodejs
 - 💞️ I’m looking to collaborate on ... interesting stuff
 - 📫 How to reach me ...email
